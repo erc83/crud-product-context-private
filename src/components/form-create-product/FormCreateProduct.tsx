@@ -1,5 +1,6 @@
 import useInput from '../../hooks/useInput'
 import styles from './FormCreateProduct.module.css'
+import { useHistory } from 'react-router-dom'
 
 interface FormProps {
     onSubmit: (product: any) => void;
@@ -9,6 +10,7 @@ const FormCreateProduct = ({ onSubmit }: FormProps) => {
     const [name, setName, setNameValue] = useInput('')
     const [price, setPrice, setPriceValue] = useInput('0')
     const disabled = () => name === '' || price === ''
+    const history = useHistory()
 
     const validNumber = (p: string) => {
         if (p === '') return '';
@@ -24,7 +26,10 @@ const FormCreateProduct = ({ onSubmit }: FormProps) => {
         })
         setNameValue('')
         setPriceValue('0')
+        history.push('/products')
     }
+
+
     return (
         <div>
             <form onSubmit={handlerSubmit} className={styles.form}>

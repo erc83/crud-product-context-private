@@ -30,7 +30,7 @@ const LoginUser = () => {
                 </form>
             </div>
         </div>
-    ) : (<Redirect to="/list" />)
+    ) : (<Redirect to="/products" />)
 }
 
 export default LoginUser

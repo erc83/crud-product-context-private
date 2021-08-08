@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import useInput from '../../hooks/useInput'
 import styles from './FormUpdateProduct.module.css'
+import { useHistory, Link } from 'react-router-dom'
 
 interface FormProps {
     onSubmit: (product: any) => void;
@@ -11,6 +12,7 @@ const FormUpdateProduct = ({ onSubmit, product }: FormProps) => {
     const [name, setName, setNameValue] = useInput('')
     const [price, setPrice, setPriceValue] = useInput(`0`)
     const disabled = () => name === '' || price === ''
+    const history = useHistory()
 
     useEffect(() => {
         setNameValue(product.name)
@@ -32,6 +34,7 @@ const FormUpdateProduct = ({ onSubmit, product }: FormProps) => {
         })
         setNameValue('')
         setPriceValue('0')
+        history.push("/products")
     }
     return (
         <div>
@@ -51,7 +54,7 @@ const FormUpdateProduct = ({ onSubmit, product }: FormProps) => {
                             <button className="btn btn-primary btn-sm" disabled={disabled()}>
                                 Save
                             </button>
-                            <a href="/" className="btn btn-secondary btn-sm">Go to home</a>
+                            <Link to="/" className="btn btn-secondary btn-sm">Go to products</Link>
                         </div>
                     </div>
                 </div>

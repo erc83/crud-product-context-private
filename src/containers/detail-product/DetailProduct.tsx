@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+
 import ContextProduct from "../../contexts/ContextProduct"
 
 const DetailProduct = () => {
@@ -22,13 +23,13 @@ const DetailProduct = () => {
                             price: {product.price}
                         </div>
                         <div className="card-footer">
-                            <a href="/" className="btn btn-primary btn-sm">Go to home</a>
+                            <Link to="/products" className="btn btn-primary btn-sm">Go to Products</Link>
                         </div>
                     </div>
                 ) : (
                     <div className="alert alert-danger mt-4">
                         <div>Not Found</div>
-                        <a href="/" className="btn btn-danger btn-sm">Go to home</a>
+                        <Link to="/" className="btn btn-danger btn-sm">Go to Login</Link>
                     </div>
                 )}
             </div>

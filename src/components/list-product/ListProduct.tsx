@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import ContextProduct from '../../contexts/ContextProduct'
+import { Link } from 'react-router-dom'
 
 const ListProduct = () => {
     const context = useContext(ContextProduct)
@@ -24,26 +25,27 @@ const ListProduct = () => {
                                         <td>{product.price}</td>
                                         <td className="text-end">
                                             <div className="btn-group">
-                                                <a
+                                                <Link
                                                     className="btn btn-primary btn-sm"
-                                                    href={`/detail/${product.id}`}>
-                                                    View</a>
-                                                <a
+                                                    to={`/products/detail/${product.id}`}>
+                                                    View</Link>
+                                                <Link
                                                     className="btn btn-info btn-sm"
-                                                    href={`/edit/${product.id}`}>
-                                                    Edit</a>
-                                                <a
+                                                    to={`/products/update/${product.id}`}>
+                                                    Edit</Link>
+                                                <Link
                                                     className="btn btn-sm btn-warning"
-                                                    href={`/remove/${product.id}`}>
-                                                    Remove</a>
+                                                    to={`/products/delete/${product.id}`}>
+                                                    Remove</Link>
                                             </div>
                                         </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>) : (
-                        <div>
-                            Not Items
+                        <div className="alert alert-danger mt-4">
+                            <div>Not Items</div>
+                            <Link to="/products/create" className="btn btn-primary btn-sm">Create Item</Link>
                         </div>
                     )}
                 </div>
