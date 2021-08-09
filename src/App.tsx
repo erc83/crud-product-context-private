@@ -12,6 +12,7 @@ import DeleteProduct from './containers/delete-product/DeleteProduct'
 import UpdateProduct from './containers/update-product/UpdateProduct'
 import DetailProduct from './containers/detail-product/DetailProduct'
 import NotFound from './containers/not-found/NotFound'
+import PrivateRoute from './components/private-router/PrivateRoute'
 
 function App() {
   return (
@@ -28,15 +29,13 @@ function App() {
               <Route path="/products" exact>
                   <Home />
               </Route>
-              <Route path="/products/create">
-                  <CreateProduct />
-              </Route>
-              <Route path="/products/delete/:id">
-                  <DeleteProduct />
-              </Route>
-              <Route path="/products/update/:id">
-                  <UpdateProduct />
-              </Route>
+
+              <PrivateRoute path="/products/create" component={CreateProduct} />
+
+              <PrivateRoute path="/products/delete/:id" component={DeleteProduct} />
+              
+              <PrivateRoute path="/products/update/:id" component={UpdateProduct}/>
+
               <Route path="/products/detail/:id">
                   <DetailProduct />
               </Route>
